@@ -7,9 +7,12 @@ use Livewire\Component;
 
 class ShowPosts extends Component
 {
+    public $txt_search;
+
     public function render()
     {
-        $posts = Post::all();
+        //$posts = Post::all();
+        $posts = Post::where('title', 'like', '%'.$this->txt_search.'%')->get();
         return view('livewire.show-posts', compact('posts'));
     }
 }

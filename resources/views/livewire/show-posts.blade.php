@@ -5,6 +5,13 @@
         </h2>
     </x-slot>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+        <div class="flex py-5">
+            <div class="mb-3 xl:w-96">
+                <label for="exampleText0" class="form-label inline-block mb-2 text-gray-700">Busqueda</label>
+                <input type="text" name="txt_search" wire:model="txt_search" class="form-control rounded" placeholder="Search"/>
+                <label for="exampleText0" class="form-label inline-block mb-2 text-gray-700">{{$txt_search}}</label>
+            </div>
+        </div>
         <x-tabla>
             <table class="min-w-max w-full table-auto">
                 <thead>
