@@ -20,9 +20,9 @@
                 <table class="min-w-max w-full table-auto">
                     <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                        <th class="py-3 px-6 text-left">ID</th>
-                        <th class="py-3 px-6 text-left">Title</th>
-                        <th class="py-3 px-6 text-center">Content</th>
+                        <th class="py-3 px-6 text-left cursor-pointer"   wire:click="order('id')">ID</th>
+                        <th class="py-3 px-6 text-left cursor-pointer"   wire:click="order('title')">Title</th>
+                        <th class="py-3 px-6 text-center cursor-pointer" wire:click="order('content')">Content</th>
                         <th class="py-3 px-6 text-center">Actions</th>
                     </tr>
                     </thead>
