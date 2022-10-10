@@ -20,9 +20,42 @@
                 <table class="min-w-max w-full table-auto">
                     <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                        <th class="py-3 px-6 text-left cursor-pointer"   wire:click="order('id')">ID</th>
-                        <th class="py-3 px-6 text-left cursor-pointer"   wire:click="order('title')">Title</th>
-                        <th class="py-3 px-6 text-center cursor-pointer" wire:click="order('content')">Content</th>
+                        <th class="py-3 px-6  text-left cursor-pointer"   wire:click="order('id')">
+                            ID
+                            @if($column == 'id')
+                                @if($orderBy == 'ASC')
+                                    <i class="fa fa-sort-amount-desc"></i>
+                                @else
+                                    <i class="fa fa-sort-amount-asc"></i>
+                                @endif
+                            @else
+                                <i class="fa fa-sort"></i>
+                            @endif
+                        </th>
+                        <th class="py-3 px-6 text-left cursor-pointer"   wire:click="order('title')">
+                            Title
+                            @if($column == 'title')
+                                @if($orderBy == 'ASC')
+                                    <i class="fa fa-sort-alpha-asc"></i>
+                                    @else
+                                    <i class="fa fa-sort-alpha-desc"></i>
+                                @endif
+                                @else
+                                <i class="fa fa-sort"></i>
+                            @endif
+                        </th>
+                        <th class="py-3 px-6 text-center cursor-pointer" wire:click="order('content')">
+                            Content
+                            @if($column == 'content')
+                                @if($orderBy == 'ASC')
+                                    <i class="fa fa-sort-alpha-asc"></i>
+                                @else
+                                    <i class="fa fa-sort-alpha-desc"></i>
+                                @endif
+                            @else
+                                <i class="fa fa-sort"></i>
+                            @endif
+                        </th>
                         <th class="py-3 px-6 text-center">Actions</th>
                     </tr>
                     </thead>
