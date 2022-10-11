@@ -82,7 +82,11 @@
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center">
                                     <span>
-                                        <img src="{{$post->url_image}}">
+                                        @if(str_contains($post->url_image, 'posts/'))
+                                            <img src="{{asset($post->url_image)}}">
+                                        @else
+                                            <img src="{{$post->url_image}}">
+                                        @endif
                                     </span>
                                 </div>
                             </td>
