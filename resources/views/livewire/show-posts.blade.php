@@ -57,6 +57,7 @@
                                 <i class="fa fa-sort"></i>
                             @endif
                         </th>
+                        <th class="py-3 px-6 text-center">Image</th>
                         <th class="py-3 px-6 text-center">Actions</th>
                     </tr>
                     </thead>
@@ -76,6 +77,13 @@
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center">
                                     <span>{{$post->content}}</span>
+                                </div>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <div class="flex items-center">
+                                    <span>
+                                        <img src="{{$post->url_image}}">
+                                    </span>
                                 </div>
                             </td>
                             <td class="py-3 px-6 text-center">
