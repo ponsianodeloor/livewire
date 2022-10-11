@@ -90,7 +90,7 @@
                                     </span>
                                 </div>
                             </td>
-                            <td class="py-3 px-6 text-center">
+                            <td class="py-3 px-6">
                                 <div class="flex item-center justify-center">
                                     <a href="#"><i class="fa fa-eye"></i></a>
                                     @livewire('post.edit-post', ['post'=>$post], key($post->id))
