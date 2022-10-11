@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class EditPost extends Component
 {
+    public $open_modal = false;
+
     public function render()
     {
         return view('livewire.post.edit-post');
