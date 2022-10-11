@@ -15,6 +15,11 @@ class CreatePost extends Component
         'content'=>'required|min:10'
     ];
 
+    protected $messages = [
+        'title.required' => 'El titulo no puede ser vacio.',
+        'title.max:10' => 'El tamanio debe considerarse.',
+    ];
+
     /**
      * @param $propertyName se usa para validar las reglas establecidas en los inputs
      * solo se aplican si wire:model.defer="title" no esta activo y solo se encuentra wire:model="title"
@@ -26,6 +31,10 @@ class CreatePost extends Component
 
     public function render()
     {
+        /**
+         * if(count($this->getErrorBag()->all()) > 0){
+            $this->emit('alert', 'Post', 'Datos vacios', 'error');
+        }**/
         return view('livewire.post.create-post');
     }
 
