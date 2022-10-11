@@ -11,13 +11,14 @@
                 <!--
                 <input type="text" name="txt_search" wire:model="txt_search" class="form-control rounded" placeholder="Search"/>
                 -->
-                <x-jet-input wire:model="txt_search" name="txt_search" type="text" class="w-full"></x-jet-input>
+                <x-jet-input wire:model="txt_search" name="txt_search" type="text" class="w-full mb-6"></x-jet-input>
                 <label for="exampleText0" class="form-label inline-block mb-2 text-gray-700">{{$txt_search}}</label>
+                @livewire('post.create-post')
             </div>
         </div>
         <x-tabla>
             @if($posts->count())
-                <table class="min-w-max w-full table-auto">
+                <table class="w-full table-auto">
                     <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                         <th class="py-3 px-6  text-left cursor-pointer"   wire:click="order('id')">

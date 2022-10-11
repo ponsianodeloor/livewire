@@ -11,6 +11,9 @@ class ShowPosts extends Component
     public $column = 'id';
     public $orderBy = "ASC";
 
+    //protected $listeners = ['render'=>'render'];
+    protected $listeners = ['render'];
+
     public function render()
     {
         //$posts = Post::all();

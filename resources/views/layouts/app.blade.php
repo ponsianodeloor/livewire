@@ -41,5 +41,15 @@
         @stack('modals')
 
         @livewireScripts
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Livewire.on('alert', function (title, message, type) {
+                Swal.fire(
+                    title,
+                    message,
+                    type
+                );
+            });
+        </script>
     </body>
 </html>
