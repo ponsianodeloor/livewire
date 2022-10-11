@@ -29,9 +29,13 @@
             <x-jet-secondary-button class="mr-2" wire:click="$set('open', false)">
                 Cancelar
             </x-jet-secondary-button>
-            <x-jet-danger-button wire:click="guardarPost()">
+            <x-jet-danger-button wire:click="guardarPost()" wire:loading.attr="disabled" wire:target="guardarPost" class="disabled:opacity-25">
                 Crear Post
             </x-jet-danger-button>
+
+            <!--
+            <span wire:loading wire:target="guardarPost">Cargando...</span>
+            -->
         </x-slot>
     </x-jet-dialog-modal>
 </div>
