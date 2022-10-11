@@ -11,14 +11,15 @@
         <x-slot name="content">
             <div class="mb-4">
                 <x-jet-label value="Titulo del post"/>
-                <x-jet-input type="text" name="title" class="w-full mb-4" wire:model.defer="title"/>
+                <!-- se usa wire:model.refer cuando no se requiere interpolacion-->
+                <x-jet-input type="text" name="title" class="w-full mb-4" wire:model="title"/>
                 {{$title}}
                 @error('title')
                     {{$message}}
                 @enderror
 
                 <x-jet-label value="Contenido del Post"/>
-                <x-textarea name="content" class="w-full" wire:model.defer="content"></x-textarea>
+                <x-textarea name="content" class="w-full" wire:model="content"></x-textarea>
                 {{$content}}
                 <x-jetstream::input-error for="content"></x-jetstream::input-error>
             </div>

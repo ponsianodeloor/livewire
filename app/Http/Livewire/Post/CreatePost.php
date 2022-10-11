@@ -10,10 +10,19 @@ class CreatePost extends Component
     public $open = false;
     public $title, $content;
 
-    public $rules = [
-        'title'=>'required',
-        'content'=>'required'
+    protected $rules = [
+        'title'=>'required|max:10',
+        'content'=>'required|min:10'
     ];
+
+    /**
+     * @param $propertyName se usa para validar las reglas establecidas en los inputs
+     * solo se aplican si wire:model.defer="title" no esta activo y solo se encuentra wire:model="title"
+     * @return void
+     */
+    public function updated($propertyName){
+        $this->validateOnly($propertyName);
+    }
 
     public function render()
     {
