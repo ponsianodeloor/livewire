@@ -105,6 +105,12 @@
                 <h1>No se encuentran registros</h1>
             @endif
 
+            @if($posts->hasPages())
+                <div class="px-6 py-3">
+                    {{$posts->links()}}
+                </div>
+            @endif
+
         </x-tabla>
     </div>
     <x-jet-dialog-modal>
