@@ -30,15 +30,12 @@
                     {{$message}}
                 @enderror
             </div>
-
-            <div class="mb4">
-
+            <div>{{$content}}</div>
+            <div class="mb4" wire:ignore>
                 <x-jet-label value="Contenido del Post"/>
-                <x-textarea name="content" class="w-full" wire:model="content"></x-textarea>
-                {{$content}}
-                <x-jetstream::input-error for="content"></x-jetstream::input-error>
+                <x-textarea id="editor" name="content" class="w-full" wire:model="content"></x-textarea>
             </div>
-
+            <x-jetstream::input-error for="content"></x-jetstream::input-error>
             <div class="mb-4">
                 <input type="file" wire:model="url_image" id="{{$id_url_image}}">
                 <x-jetstream::input-error for="url_image" />
@@ -58,4 +55,19 @@
             -->
         </x-slot>
     </x-jet-dialog-modal>
+
+    @push('js')
+        <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor.create( document.querySelector( '#editor' ))
+                .then(function (){
+                    editor.model.document.on('change:data', () => {
+                        @this.set('content', editor.getData());
+                    })
+                })
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
+    @endpush
 </div>

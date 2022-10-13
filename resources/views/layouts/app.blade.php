@@ -16,6 +16,9 @@
 
         <!-- Styles -->
         @livewireStyles
+
+        @stack('css')
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -41,6 +44,9 @@
         @stack('modals')
 
         @livewireScripts
+
+        @stack('js')
+
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             Livewire.on('alert', function (title, message, type) {
