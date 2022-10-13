@@ -13,6 +13,7 @@ class ShowPosts extends Component
     public $txt_search;
     public $column = 'id';
     public $orderBy = "ASC";
+    public $cantRegistros = '10';
 
     //protected $listeners = ['render'=>'render']; // se puede usar esta opcion
     protected $listeners = ['render'];
@@ -20,6 +21,16 @@ class ShowPosts extends Component
     public function updatingTxtSearch(){
         $this->resetPage();
     }
+
+    /**
+     * esta funcion devuelve las propiedads en la url cuando cambian de valor
+    protected $queryString = [
+        'cantRegistros' => ['except'=>'10'],
+        'column' => ['except'=>'id', 'title'],
+        'orderBy' => ['except'=>'ASC'],
+        'txt_search' => ['execpt'=>''],
+    ];
+    */
 
     public function render()
     {
@@ -34,7 +45,7 @@ class ShowPosts extends Component
         $posts = Post::where('title', 'like', '%'.$this->txt_search.'%')
             ->orWhere('content', 'like', '%'.$this->txt_search.'%')
             ->orderBy($this->column, $this->orderBy)
-            ->paginate(10);
+            ->paginate($this->cantRegistros);
 
         return view('livewire.show-posts', compact('posts'));
     }

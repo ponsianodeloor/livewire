@@ -21,6 +21,17 @@
                 <table class="w-full table-auto">
                     <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th colspan="5" class="py-3 px-6  text-left cursor-pointer">
+                            <x-jet-label>Cantidad Registros </x-jet-label>
+                            <select class="block mt-1 w-full" wire:model="cantRegistros">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                         <th class="py-3 px-6  text-left cursor-pointer"   wire:click="order('id')">
                             ID
                             @if($column == 'id')
