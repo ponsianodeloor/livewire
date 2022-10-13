@@ -1,4 +1,4 @@
-<div>
+<div wire:init="loadPosts">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -17,7 +17,7 @@
             </div>
         </div>
         <x-tabla>
-            @if($posts->count())
+            @if(count($posts)) <!-- $posts->count() -->
                 <table class="w-full table-auto">
                     <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -112,16 +112,15 @@
                     @endforeach
                     </tbody>
                 </table>
+
+                @if($posts->hasPages())
+                    <div class="px-6 py-3">
+                        {{$posts->links()}}
+                    </div>
+                @endif
             @else
                 <h1>No se encuentran registros</h1>
             @endif
-
-            @if($posts->hasPages())
-                <div class="px-6 py-3">
-                    {{$posts->links()}}
-                </div>
-            @endif
-
         </x-tabla>
     </div>
     <x-jet-dialog-modal>

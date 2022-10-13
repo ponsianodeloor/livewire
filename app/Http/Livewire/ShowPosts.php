@@ -14,6 +14,7 @@ class ShowPosts extends Component
     public $column = 'id';
     public $orderBy = "ASC";
     public $cantRegistros = '10';
+    public $readyToLoad = false;
 
     //protected $listeners = ['render'=>'render']; // se puede usar esta opcion
     protected $listeners = ['render'];
@@ -42,11 +43,20 @@ class ShowPosts extends Component
             ->orderBy($this->column, $this->orderBy)
             ->get();
         */
+        /*
         $posts = Post::where('title', 'like', '%'.$this->txt_search.'%')
             ->orWhere('content', 'like', '%'.$this->txt_search.'%')
             ->orderBy($this->column, $this->orderBy)
             ->paginate($this->cantRegistros);
-
+        */
+        if ($this->readyToLoad == true){
+            $posts = Post::where('title', 'like', '%'.$this->txt_search.'%')
+                ->orWhere('content', 'like', '%'.$this->txt_search.'%')
+                ->orderBy($this->column, $this->orderBy)
+                ->paginate($this->cantRegistros);
+        }else{
+            $posts = [];
+        }
         return view('livewire.show-posts', compact('posts'));
     }
 
@@ -61,5 +71,9 @@ class ShowPosts extends Component
             $this->column = $column;
             $this->orderBy = "ASC";
         }
+    }
+
+    public function loadPosts(){
+        $this->readyToLoad = true;
     }
 }
