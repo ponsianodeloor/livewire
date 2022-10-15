@@ -105,6 +105,7 @@
                                 <div class="flex item-center justify-center">
                                     <a href="#"><i class="fa fa-eye"></i></a>
                                     @livewire('post.edit-post', ['post'=>$post], key($post->id))
+                                    @livewire('post.delete-post', ['post'=>$post], key($post->id))
                                     <a wire:click="$emit('deletePost', {{$post->id}})"><i class="fa fa-trash"></i></a>
                                 </div>
                             </td>
