@@ -105,7 +105,7 @@
                                 <div class="flex item-center justify-center">
                                     <a href="#"><i class="fa fa-eye"></i></a>
                                     @livewire('post.edit-post', ['post'=>$post], key($post->id))
-                                    <a href="#"><i class="fa fa-trash"></i></a>
+                                    <a wire:click="$emit('deletePost', {{$post->id}})"><i class="fa fa-trash"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -137,4 +137,30 @@
         </x-slot>
 
     </x-jet-dialog-modal>
+
+    @push('js')
+        <script>
+            Livewire.on('deletePost', postId=>{
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.emitTo('show-posts', 'delete', postId);
+                        //console.log(postId);
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    }
+                });
+            });
+        </script>
+    @endpush
 </div>

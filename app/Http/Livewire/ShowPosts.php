@@ -10,6 +10,7 @@ class ShowPosts extends Component
 {
     use WithPagination;
 
+    public $post;
     public $txt_search;
     public $column = 'id';
     public $orderBy = "ASC";
@@ -17,10 +18,14 @@ class ShowPosts extends Component
     public $readyToLoad = false;
 
     //protected $listeners = ['render'=>'render']; // se puede usar esta opcion
-    protected $listeners = ['render'];
+    protected $listeners = ['render', 'delete'];
 
     public function updatingTxtSearch(){
         $this->resetPage();
+    }
+
+    public function mount(Post $post){
+        $this->post = $post;
     }
 
     /**
@@ -75,5 +80,9 @@ class ShowPosts extends Component
 
     public function loadPosts(){
         $this->readyToLoad = true;
+    }
+
+    public function delete(Post $post){
+        $post->delete();
     }
 }
