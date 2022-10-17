@@ -68,4 +68,14 @@ class CreatePost extends Component
         $this->emitTo('show-posts','render');
         $this->emit('alert', 'Post', 'Guardado correctamente', 'success');
     }
+
+    public function updatingOpen(){
+        $this->reset([
+            'title',
+            'content',
+            'url_image'
+        ]);
+        $this->id_url_image = rand();
+        $this->emit('resetCKEditor');
+    }
 }

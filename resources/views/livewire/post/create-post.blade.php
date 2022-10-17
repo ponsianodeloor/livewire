@@ -63,7 +63,10 @@
                 .then(function (){
                     editor.model.document.on('change:data', () => {
                         @this.set('content', editor.getData());
-                    })
+                    });
+                    Livewire.on('resetCKEditor', ()=>{
+                        editor.setData('');
+                    });
                 })
                 .catch( error => {
                     console.error( error );
