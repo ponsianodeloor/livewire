@@ -33,7 +33,7 @@
             <div>{{$content}}</div>
             <div class="mb4" wire:ignore>
                 <x-jet-label value="Contenido del Post"/>
-                <x-textarea id="editor" name="content" class="w-full" wire:model="content"></x-textarea>
+                <x-textarea name="content" class="w-full" wire:model="content"></x-textarea>
             </div>
             <x-jetstream::input-error for="content"></x-jetstream::input-error>
             <div class="mb-4">
